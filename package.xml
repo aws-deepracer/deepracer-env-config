@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>deepracer_env_config</name>
+  <version>0.0.0</version>
+  <description>This package contains DeepRacer Environment Config.</description>
+  <maintainer email="aws-deepracer@amazon.com">AWS DeepRacer</maintainer>
+  <license>TODO: License declaration</license>
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>rospy</depend>
+  <depend>ude</depend>
+
+  <test_depend>python3-pytest</test_depend>
+</package>

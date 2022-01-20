@@ -1,0 +1,4 @@
+<launch>
+  <param name="test_module" value="."/>
+  <test test-name="deepracer_env_config" pkg="deepracer_env_config" type="pytest_runner.py" />
+</launch>
