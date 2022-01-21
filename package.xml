@@ -2,10 +2,11 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>deepracer_env_config</name>
-  <version>0.0.0</version>
-  <description>This package contains DeepRacer Environment Config.</description>
+  <author>Amazon Web Services</author>
+  <version>0.1.0</version>
+  <description>Open source library to change DeepRacer environment configuration dynamically.</description>
   <maintainer email="aws-deepracer@amazon.com">AWS DeepRacer</maintainer>
-  <license>TODO: License declaration</license>
+  <license>Apache License 2.0</license>
   <buildtool_depend>catkin</buildtool_depend>
 
   <depend>rospy</depend>
