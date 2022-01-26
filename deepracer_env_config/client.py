@@ -188,6 +188,8 @@ class Client(SideChannelObserverInterface):
         Args:
             agent (Agent): new agent config
         """
+        if not isinstance(agent, Agent):
+            raise ValueError("Expected Agent type but received {}.".format(type(agent)))
         key = self.KEY_FORMAT.format(ActionType.APPLY.value,
                                      TargetType.AGENT.value)
         self._side_channel.send(key, json.dumps(agent.to_json()))
@@ -199,6 +201,8 @@ class Client(SideChannelObserverInterface):
         Args:
             track (Track): new track config
         """
+        if not isinstance(track, Track):
+            raise ValueError("Expected Track type but received {}.".format(type(track)))
         key = self.KEY_FORMAT.format(ActionType.APPLY.value,
                                      TargetType.TRACK.value)
         self._side_channel.send(key, json.dumps(track.to_json()))
@@ -210,17 +214,21 @@ class Client(SideChannelObserverInterface):
         Args:
             agent (Agent): new agent config for new agent.
         """
+        if not isinstance(agent, Agent):
+            raise ValueError("Expected Agent type but received {}.".format(type(agent)))
         key = self.KEY_FORMAT.format(ActionType.SPAWN.value,
                                      TargetType.AGENT.value)
         self._side_channel.send(key, json.dumps(agent.to_json()))
 
-    def delete_agent(self, agent) -> None:
+    def delete_agent(self, agent: Agent) -> None:
         """
         Deletes the agent with given agent config.
 
         Args:
             agent (Agent): the agent config to delete.
         """
+        if not isinstance(agent, Agent):
+            raise ValueError("Expected Agent type but received {}.".format(type(agent)))
         key = self.KEY_FORMAT.format(ActionType.DELETE.value,
                                      TargetType.AGENT.value)
         self._side_channel.send(key, json.dumps(agent.to_json()))

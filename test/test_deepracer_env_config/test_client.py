@@ -215,6 +215,14 @@ class ClientTest(TestCase):
                                        TargetType.AGENT.value)
         side_channel_mock.send.assert_called_once_with(key, json.dumps(agent.to_json()))
 
+    def test_apply_agent_invalid_argument(self):
+        track = Track(name="test_track")
+
+        side_channel_mock = MagicMock()
+        client = Client(side_channel_mock)
+        with self.assertRaises(ValueError):
+            client.apply_agent(track)
+
     def test_apply_track(self):
         track = Track(name="test_track")
 
@@ -225,6 +233,18 @@ class ClientTest(TestCase):
         key = client.KEY_FORMAT.format(ActionType.APPLY.value,
                                        TargetType.TRACK.value)
         side_channel_mock.send.assert_called_once_with(key, json.dumps(track.to_json()))
+
+    def test_apply_track_invalid_argument(self):
+        agent = Agent(name="test",
+                      shell="test_shell",
+                      sensor_config_type=SensorConfigType.STEREO_CAMERAS_AND_LIDAR,
+                      start_location=Location(normalized_distance=3.0,
+                                              track_line=TrackLine.INNER_LANE_CENTER_LINE))
+
+        side_channel_mock = MagicMock()
+        client = Client(side_channel_mock)
+        with self.assertRaises(ValueError):
+            client.apply_track(agent)
 
     def test_spawn_agent(self):
         agent = Agent(name="test",
@@ -241,6 +261,14 @@ class ClientTest(TestCase):
                                        TargetType.AGENT.value)
         side_channel_mock.send.assert_called_once_with(key, json.dumps(agent.to_json()))
 
+    def test_spawn_agent_invalid_argument(self):
+        track = Track(name="test_track")
+
+        side_channel_mock = MagicMock()
+        client = Client(side_channel_mock)
+        with self.assertRaises(ValueError):
+            client.spawn_agent(track)
+
     def test_delete_agent(self):
         agent = Agent(name="test",
                       shell="test_shell",
@@ -255,6 +283,14 @@ class ClientTest(TestCase):
         key = client.KEY_FORMAT.format(ActionType.DELETE.value,
                                        TargetType.AGENT.value)
         side_channel_mock.send.assert_called_once_with(key, json.dumps(agent.to_json()))
+
+    def test_delete_agent_invalid_argument(self):
+        track = Track(name="test_track")
+
+        side_channel_mock = MagicMock()
+        client = Client(side_channel_mock)
+        with self.assertRaises(ValueError):
+            client.delete_agent(track)
 
     def test_on_received(self):
         side_channel_mock = MagicMock()

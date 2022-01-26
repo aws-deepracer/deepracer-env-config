@@ -209,7 +209,14 @@ class ConfigServer(SideChannelObserverInterface):
                 method_name = "{}_{}".format(action.value,
                                              target.value)
                 method = getattr(self, method_name)
-                config = method(value)
+
+                try:
+                    config = method(value)
+                except Exception as ex:
+                    logging.info("[Server] method {} threw Exception.".format(method_name),
+                                 exc_info=ex)
+                    return
+
                 if action == ActionType.GET:
                     if isinstance(config, ConfigInterface):
                         side_channel.send(key, json.dumps(config.to_json()))

@@ -297,6 +297,22 @@ class ServerTest(TestCase):
                            value=json.dumps(track.to_json()))
         assert server.get_track() == track
 
+    def test_on_received_silently_ignore_wrong_target_match(self):
+        side_channel_mock = MagicMock()
+        server = ConfigServer(side_channel_mock)
+        orig_agents = server.get_agents()
+
+        key = Client.KEY_FORMAT.format(ActionType.APPLY.value,
+                                       TargetType.AGENT.value)
+
+        track = Track(name="test_track")
+
+        server.on_received(side_channel_mock,
+                           key=key,
+                           value=json.dumps(track.to_json()))
+        assert server.get_track() != track
+        assert server.get_agents() == orig_agents
+
     def test_on_received_spawn_agent(self):
         side_channel_mock = MagicMock()
         server = ConfigServer(side_channel_mock)
