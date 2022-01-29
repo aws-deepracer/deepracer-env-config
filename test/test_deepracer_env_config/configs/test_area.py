@@ -32,38 +32,77 @@ class AreaTest(TestCase):
         area = Area()
 
         assert area.game_over_condition == GameOverConditionType.ANY
+        assert area.track_names == set()
+        assert area.shell_names == set()
 
         game_over_condition = GameOverConditionType.ALL
+        track_names = {"track1", "track2"}
+        shell_names = {"shell1", "shell2"}
 
-        area = Area(game_over_condition=game_over_condition)
+        area = Area(game_over_condition=game_over_condition,
+                    track_names=track_names,
+                    shell_names=shell_names)
         assert area.game_over_condition == game_over_condition
+        assert area.track_names == track_names
+        assert area.track_names is not track_names
+        assert area.shell_names == shell_names
+        assert area.shell_names is not shell_names
 
     def test_setter(self):
         area = Area()
 
         assert area.game_over_condition == GameOverConditionType.ANY
+        assert area.track_names == set()
+        assert area.shell_names == set()
 
         game_over_condition = GameOverConditionType.ALL
+        track_names = {"track1", "track2"}
+        shell_names = {"shell1", "shell2"}
 
         area.game_over_condition = game_over_condition
+        area.track_names = track_names
+        area.shell_names = shell_names
 
         assert area.game_over_condition == game_over_condition
+        assert area.track_names == track_names
+        assert area.track_names is not track_names
+        assert area.shell_names == shell_names
+        assert area.shell_names is not shell_names
 
     def test_to_json(self):
         area = Area()
         expected_json = {
-            "game_over_condition": GameOverConditionType.ANY.value
+            "game_over_condition": GameOverConditionType.ANY.value,
+            "track_names": [],
+            "shell_names": []
+        }
+        self.assertDictEqual(expected_json, area.to_json())
+
+        track_names = {"track1", "track2"}
+        shell_names = {"shell1", "shell2"}
+        area = Area(track_names=track_names,
+                    shell_names=shell_names)
+        expected_json = {
+            "game_over_condition": GameOverConditionType.ANY.value,
+            "track_names": list(track_names),
+            "shell_names": list(shell_names)
         }
         self.assertDictEqual(expected_json, area.to_json())
 
     def test_from_json(self):
         game_over_condition = GameOverConditionType.ALL
+        track_names = {"track1", "track2"}
+        shell_names = {"shell1", "shell2"}
 
         json_obj = {
-            "game_over_condition": game_over_condition.value
+            "game_over_condition": game_over_condition.value,
+            "track_names": list(track_names),
+            "shell_names": list(shell_names)
         }
 
-        expected_area = Area(game_over_condition=game_over_condition)
+        expected_area = Area(game_over_condition=game_over_condition,
+                             track_names=track_names,
+                             shell_names=shell_names)
 
         assert expected_area == Area.from_json(json_obj)
 
@@ -76,20 +115,34 @@ class AreaTest(TestCase):
 
     def test_eq(self):
         game_over_condition = GameOverConditionType.ALL
+        track_names = {"track1", "track2"}
+        shell_names = {"shell1", "shell2"}
 
-        area1 = Area(game_over_condition=game_over_condition)
+        area1 = Area(game_over_condition=game_over_condition,
+                     track_names=track_names,
+                     shell_names=shell_names)
 
-        area2 = Area(game_over_condition=game_over_condition)
+        area2 = Area(game_over_condition=game_over_condition,
+                     track_names=track_names,
+                     shell_names=shell_names)
 
         assert area1 == area2
 
     def test_ne(self):
         game_over_condition = GameOverConditionType.ALL
+        track_names = {"track1", "track2"}
+        shell_names = {"shell1", "shell2"}
 
-        area1 = Area(game_over_condition=game_over_condition)
+        area1 = Area(game_over_condition=game_over_condition,
+                     track_names=track_names,
+                     shell_names=shell_names)
 
         game_over_condition2 = GameOverConditionType.ANY
+        track_names2 = {"track3", "track4"}
+        shell_names2 = {"shell3", "shell4"}
 
-        area2 = Area(game_over_condition=game_over_condition2)
+        area2 = Area(game_over_condition=game_over_condition2,
+                     track_names=track_names2,
+                     shell_names=shell_names2)
 
         assert area1 != area2

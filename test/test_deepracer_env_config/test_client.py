@@ -94,9 +94,13 @@ class ClientTest(TestCase):
 
     def test_get_area(self):
         game_over_condition = GameOverConditionType.ALL
+        track_names = frozenset({"track1", "track2"})
+        shell_names = frozenset({"shell1", "shell2"})
 
         expected_area_config = {
-            "game_over_condition": game_over_condition.value
+            "game_over_condition": game_over_condition.value,
+            "track_names": list(track_names),
+            "shell_names": list(shell_names)
         }
 
         side_channel_mock = MagicMock()
@@ -117,7 +121,6 @@ class ClientTest(TestCase):
         area = client.get_area()
 
         assert area == Area.from_json(expected_area_config)
-        self.assertDictEqual(area.to_json(), expected_area_config)
 
     def test_get_agents(self):
         life_count = 5
