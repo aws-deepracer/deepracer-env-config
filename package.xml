@@ -11,6 +11,7 @@
 
   <depend>rospy</depend>
   <depend>ude</depend>
+  <depend>deepracer_track_geometry</depend>
 
   <test_depend>python3-pytest</test_depend>
 </package>

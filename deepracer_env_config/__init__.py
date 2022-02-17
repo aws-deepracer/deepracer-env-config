@@ -14,8 +14,6 @@
 #   limitations under the License.                                              #
 #################################################################################
 """DeepRacer Environment Config modules"""
-from .constants import TrackDirection
-from .constants import TrackLine
 from .constants import SensorConfigType
 from .constants import GameOverConditionType
 from .constants import ModelRandomizerType
@@ -36,3 +34,6 @@ from .configs.track import Track
 
 from .client import Client
 from .config_server import ConfigServer
+
+from deepracer_track_geometry import TrackDirection
+from deepracer_track_geometry import TrackLine

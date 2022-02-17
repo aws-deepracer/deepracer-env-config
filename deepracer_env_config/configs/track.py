@@ -18,7 +18,9 @@ import json
 from typing import Union
 
 from deepracer_env_config.configs.config_interface import ConfigInterface
-from deepracer_env_config.constants import DEFAULT_TRACK, TrackDirection
+from deepracer_env_config.constants import DEFAULT_TRACK
+
+from deepracer_track_geometry import TrackDirection
 
 
 class Track(ConfigInterface):

@@ -18,27 +18,6 @@ from enum import Enum, unique
 
 
 @unique
-class TrackDirection(Enum):
-    """
-    Track Direction
-    """
-    CLOCKWISE = "cw"
-    COUNTER_CLOCKWISE = "ccw"
-
-
-@unique
-class TrackLine(Enum):
-    """
-    The lines defines a track.
-    """
-    TRACK_CENTER_LINE = "track_center_line"
-    INNER_LANE_CENTER_LINE = "inner_lane_center_line"
-    OUTER_LANE_CENTER_LINE = "outer_lane_center_line"
-    INNER_BORDER_LINE = "inner_border_line"
-    OUTER_BORDER_LINE = "outer_border_line"
-
-
-@unique
 class SensorConfigType(Enum):
     """
     SensorConfigType Enumerator

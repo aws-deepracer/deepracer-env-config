@@ -19,7 +19,7 @@ from unittest.mock import patch, MagicMock, call
 import inspect
 
 from deepracer_env_config.configs.location import Location
-from deepracer_env_config.constants import TrackLine
+from deepracer_track_geometry import TrackLine
 
 myself: Callable[[], Any] = lambda: inspect.stack()[1][3]
 

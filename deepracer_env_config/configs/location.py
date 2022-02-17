@@ -18,7 +18,7 @@ import json
 from typing import Union
 
 from deepracer_env_config.configs.config_interface import ConfigInterface
-from deepracer_env_config.constants import TrackLine
+from deepracer_track_geometry import TrackLine
 
 
 class Location(ConfigInterface):

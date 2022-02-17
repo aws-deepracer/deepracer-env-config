@@ -27,11 +27,11 @@ from deepracer_env_config.configs.agent import Agent
 from deepracer_env_config.configs.track import Track
 from deepracer_env_config.configs.location import Location
 from deepracer_env_config.constants import (
-    SensorConfigType, TrackLine,
+    SensorConfigType,
     ActionType, TargetType,
-    GameOverConditionType,
-    TrackDirection
+    GameOverConditionType
 )
+from deepracer_track_geometry import TrackLine, TrackDirection
 
 myself: Callable[[], Any] = lambda: inspect.stack()[1][3]
 

@@ -124,15 +124,9 @@ class Client(SideChannelObserverInterface):
                     try_count += 1
                     if try_count > max_retry_attempts:
                         raise TimeoutError("Failed to retrieve config with {} retries".format(str(max_retry_attempts)))
-                    # TODO: logging with print is not a good practice, but this package can be used in
-                    #    ROS, regular python, and notebook environments where their logging mechanisms are
-                    #    different, so I need to figure out what is right mechanism to log for different environments.
-                    #    But since print work throughout all environments, I will stick with print for now.
                     log_msg_format = "[Client] Failed to retrieve config, Retry count: {0}/{1}"
-                    # logging.info(log_msg_format.format(str(try_count),
-                    #                                    str(max_retry_attempts)))
-                    print(log_msg_format.format(str(try_count),
-                                                str(max_retry_attempts)))
+                    logging.info(log_msg_format.format(str(try_count),
+                                                       str(max_retry_attempts)))
 
     def get_area(self) -> Area:
         """
