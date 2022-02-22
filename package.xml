@@ -3,7 +3,7 @@
 <package format="3">
   <name>deepracer_env_config</name>
   <author>Amazon Web Services</author>
-  <version>0.1.0</version>
+  <version>0.1.2</version>
   <description>Open source library to change DeepRacer environment configuration dynamically.</description>
   <maintainer email="aws-deepracer@amazon.com">AWS DeepRacer</maintainer>
   <license>Apache License 2.0</license>

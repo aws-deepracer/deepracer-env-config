@@ -39,13 +39,15 @@ package_name = "deepracer-env-config"
 # Declare minimal set for installation
 required_packages = [
     "setuptools",
+    "deepracer-track-geometry>=0.1.0",
+    "ude>=0.1.0"
 ]
 
 test_required_packages = [
     "flake8>=3.5,<4.0.0",
     "pytest-flake8==1.0.7",
     "pytest-pep257==0.0.5",
-    "pytest-timeout==1.4.2",
+    "pytest-timeout==1.4.2"
 ]
 
 setup_args = {
@@ -55,6 +57,7 @@ setup_args = {
     "package_dir": {"": "."},
     "description": "Open source library to change DeepRacer environment configuration dynamically.",
     "long_description": read("README.md"),
+    "long_description_content_type": 'text/markdown',
     "author": "Amazon Web Services",
     "url": "https://github.com/aws-deepracer/deepracer-env-config",
     "license": "Apache License 2.0",
