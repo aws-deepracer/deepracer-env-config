@@ -1,3 +1,5 @@
+## We have made a difficult decision of ceasing active development on this repo as of Jul 2022.
+
 ## AWS DeepRacer Environment Config
 
 The AWS DeepRacer Environment Config package provides a simple interface for manipulating the "RL Lab - AWS DeepRacer" environment configurations over the UDE side-channel.
